@@ -2,26 +2,30 @@ import React, {useState} from "react";
 import {Button} from "./Button";
 import {Tablo} from "./Tablo";
 
+type СounterType = {
+    maxValue:number
+    startValue:number
+}
 
-export const Сounter = () => {
-    const minValue = 0;
-    const maxValue = 5;
-    const [count, setCount] = useState(minValue)
 
-    const schitalka = () => {
+export const Сounter = (props:СounterType) => {
+
+    let [count, setCount] = useState(props.startValue)
+
+    const additionNumber = () => {
         setCount(count + 1)
 
     }
     const obnulyator = () => {
-        setCount(minValue)
+        setCount(props.startValue)
 
     }
 
     return (
-        <div className={'Tablizhe'}>
+        <div className={'counter'}>
 
-            <Tablo count={count}/>
-            <Button callback={schitalka} name={'Bems!'} disabled={count >= maxValue}/>
+            <Tablo count={count} maxValue={props.maxValue}/>
+            <Button callback={additionNumber} name={'Inc'} disabled={count >= props.maxValue}/>
             <Button callback={obnulyator} name={'obnulyator'} disabled={count === 0}/>
             {/*<button onClick={schitalka} disabled={} >test</button>*/}
         </div>

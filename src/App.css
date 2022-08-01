@@ -1,5 +1,6 @@
 .App {
     text-align: center;
+
 }
 
 .App-logo {
@@ -28,7 +29,7 @@
     color: #61dafb;
 }
 
-.Tablizhe {
+.counter {
     border: 1px solid black;
     width: 400px;
     height: 200px;
@@ -53,9 +54,24 @@
 }
 
 .button {
-    border-radius: 20px;
+    border-radius: 15px;
     background-color: darkgray;
 }
+
+.counter2{
+    border: 1px solid black;
+    width: 400px;
+    height: 200px;
+    margin: 100px auto;
+    border-radius: 20px;
+    background-color: oldlace;
+
+    display: grid;
+
+    grid-auto-rows: 1fr 1fr 1fr;
+}
+
+
 
 @keyframes App-logo-spin {
     from {
