@@ -2,31 +2,37 @@ import React, {useState} from "react";
 import {Button} from "./Button";
 import {Tablo} from "./Tablo";
 
+
 type СounterType = {
-    maxValue:number
-    startValue:number
+    maxValue: number
+    startValue: number
+    maxNumber: number
+    startNumber: number
+    count:number
+    setCount:(count:number)=>void
 }
 
 
-export const Сounter = (props:СounterType) => {
+export const Сounter = (props: СounterType) => {
 
-    let [count, setCount] = useState(props.startValue)
+
 
     const additionNumber = () => {
-        setCount(count + 1)
+        props.setCount(props.count + 1)
 
     }
     const obnulyator = () => {
-        setCount(props.startValue)
+        props.setCount(props.startValue)
 
     }
+
 
     return (
         <div className={'counter'}>
 
-            <Tablo count={count} maxValue={props.maxValue}/>
-            <Button callback={additionNumber} name={'Inc'} disabled={count >= props.maxValue}/>
-            <Button callback={obnulyator} name={'obnulyator'} disabled={count === 0}/>
+            <Tablo count={props.count} maxValue={props.maxValue}/>
+            <Button callback={additionNumber} name={'Inc'} disabled={props.count >= props.maxValue || props.maxValue!=props.maxNumber || props.startValue != props.startNumber}/>
+            <Button callback={obnulyator} name={'obnulyator'} disabled={props.count === 0 || props.maxValue!=props.maxNumber|| props.startValue != props.startNumber}/>
             {/*<button onClick={schitalka} disabled={} >test</button>*/}
         </div>
     )
