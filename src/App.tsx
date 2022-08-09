@@ -4,73 +4,72 @@ import {Сounter} from "./Сounter";
 
 import {Setting} from "./Setting";
 
-function App() {
-
-    let [maxValue, setMaxValue] = useState(5);
-    let [startValue, setStartValue] = useState(0);
-    let [count, setCount] = useState(startValue)
-
-    let [maxNumber, setMaxNumber] = useState(5);
-    let [startNumber, setStartNumber] = useState(0);
+function App(): any {
 
 
-    const appMaxValueHandler = (number: number) => {
-        setMaxNumber(number)
-    }
 
-    const appStartValueHandler = (number: number) => {
-        setStartNumber(number)
-    }
 
-    const onClickHandler = () => {
-        setMaxValue(maxNumber)
-        setStartValue(startNumber)
-        setCount(startNumber)
+    const [startValue, setStartValue] = useState(0);
+    const [maxValue, setMaxValue] = useState(5);
+    const [count, setCount] = useState(0)
+
+
+    // const appMaxValueHandler = (number: number) => {
+    //     setMaxNumber(number)
+    // }
+    //
+    // const appStartValueHandler = (number: number) => {
+    //     setStartNumber(number)
+    // }
+
+    const onClickHandler = (intermediateStartValue:number, intermediateMaxValue:number) => {
+        setMaxValue(intermediateMaxValue)
+        setStartValue(intermediateStartValue)
+        setCount(intermediateStartValue)
         /*setState('value', maxValue)*/
-        localStorage.setItem('maxValue', JSON.stringify(maxValue))
-        localStorage.setItem('startValue', JSON.stringify(startValue))
+         }
+
+     /*   useEffect(() => {
+            const valueMaxString = localStorage.getItem('maxValue')
+            const valueStartString = localStorage.getItem('startValue')
+
+            if (valueMaxString && valueStartString) {
+                const newMax = JSON.parse(valueMaxString)
+                const newStart = JSON.parse(valueStartString)
+
+                setMaxValue(newMax)
+                setStartValue(newStart)
+
+            }
+        }, []);
+
+        useEffect(() => {
+            localStorage.setItem('maxValue', JSON.stringify(maxValue))
+            localStorage.setItem('startValue', JSON.stringify(startValue))
+        }, [maxValue, startValue])*/
+
+        return (
+            <div className="App">
+                <Setting
+                    //   setMaxNumber={setMaxValue}
+                    //     setStartNumber={setStartValue}
+                  //  setIntermediateMaxValue={setIntermediateMaxValue}
+                  //  setIntermediateStartValue={setIntermediateStartValue}
+
+                    onClickHandler={onClickHandler} //() => setCount(startValue)
+                  //  maxValue={maxValue}
+                 //   startValue={startValue}
+
+                />
+                <Сounter
+                    maxValue={maxValue}
+                    startValue={startValue}
+                    count={count}
+                    setCount={setCount}
+                />
+            </div>
+        );
     }
 
-    useEffect(()=>{
-        let valueMaxString = localStorage.getItem('maxValue')
-        let valueStartString = localStorage.getItem('startValue')
-
-        if (valueMaxString && valueStartString) {
-            let newMax = JSON.parse(valueMaxString)
-            let newStart = JSON.parse(valueStartString)
-
-            setMaxValue(newMax)
-            setStartValue(newStart)
-        }
-    },[]);
-
-
-
-
-    return (
-        <div className="App">
-            <Setting maxValue={maxValue}
-                     appMaxValueHandler={appMaxValueHandler}
-                     appStartValueHandler={appStartValueHandler}
-                     setMaxNumber={setMaxNumber}
-                     setStartNumber={setStartNumber}
-                     startValue={startValue}
-                     onClickHandler={onClickHandler}
-
-                     maxNumber={maxNumber}
-                     startNumber={startNumber}
-
-            />
-            <Сounter maxValue={maxValue}
-                     startValue={startValue}
-                     maxNumber={maxNumber}
-                     startNumber={startNumber}
-
-                     count={count}
-                     setCount={setCount}
-            />
-        </div>
-    );
-}
 
 export default App;

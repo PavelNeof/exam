@@ -3,36 +3,52 @@ import {Button} from "./Button";
 import {Tablo} from "./Tablo";
 
 
-type СounterType = {
+type Props = {
     maxValue: number
     startValue: number
-    maxNumber: number
-    startNumber: number
-    count:number
-    setCount:(count:number)=>void
+    count: number
+    setCount: (count: number) => void
 }
 
 
-export const Сounter = (props: СounterType) => {
+
+export const Сounter = (props:Props) => {
+
+
+     const additionNumber = () => {
+         props.setCount(props.count + 1)
+
+
+     }
 
 
 
-    const additionNumber = () => {
-        props.setCount(props.count + 1)
+const getMax = ()=>{
 
-    }
-    const obnulyator = () => {
-        props.setCount(props.startValue)
-
-    }
+   if(localStorage.getItem('maxValue')){
+     console.log(typeof localStorage.getItem('maxValue'))
+   return localStorage.getItem('maxValue')
+}}
 
 
     return (
         <div className={'counter'}>
+            {/*disabled={props.count >= props.maxValue || props.maxValue!== props.maxNumber || props.startValue !== props.startNumber}*/}
+
+            {/*disabled={props.count === 0 || props.maxValue!=props.maxNumber|| props.startValue != props.startNumber}*/}
+
+            {/*{localStorage.getItem(
+                    'maxValue') !== props.maxValue.toString() ||
+                localStorage.getItem('startValue') !== props.startValue.toString() ||
+                props.startValue === props.count}*/}
+
+            {/*localStorage.getItem('maxValue') !== props.maxValue.toString() ||
+            localStorage.getItem('startValue') !== props.startValue.toString() ||
+            props.maxValue === props.count*/}
 
             <Tablo count={props.count} maxValue={props.maxValue}/>
-            <Button callback={additionNumber} name={'Inc'} disabled={props.count >= props.maxValue || props.maxValue!=props.maxNumber || props.startValue != props.startNumber}/>
-            <Button callback={obnulyator} name={'obnulyator'} disabled={props.count === 0 || props.maxValue!=props.maxNumber|| props.startValue != props.startNumber}/>
+            <Button callback={additionNumber} name={'Inc'} disabled={false}/>
+            <Button callback={() => props.setCount(props.startValue)} name={'Reset'} disabled={false}/>
             {/*<button onClick={schitalka} disabled={} >test</button>*/}
         </div>
     )
