@@ -30,11 +30,12 @@
 }
 
 .counter {
-    border: 1px solid black;
+    border: 3px solid #39ffe6;
     width: 400px;
     height: 200px;
     margin: 100px auto;
     border-radius: 20px;
+
     background-color: oldlace;
 
     display: grid;
@@ -59,7 +60,7 @@
 }
 
 .counter2{
-    border: 1px solid black;
+    border: 3px solid #39ffe6;
     width: 400px;
     height: 200px;
     margin: 100px auto;
@@ -71,8 +72,14 @@
     grid-auto-rows: 1fr 1fr 1fr;
 }
 
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .error{
-    background-color: red;
+    background-color: #f14949;
 }
 
 .errorText {

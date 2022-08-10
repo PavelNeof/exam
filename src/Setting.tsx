@@ -35,9 +35,9 @@ export const Setting = (props: SettingType) => {
 
     return (
         <div className={'counter2'}>
-            <div>Max value: <input className={ props.intermediateMaxValue <= props.intermediateStartValue ? 'error':''}
+            <div className={'input'}>Max value: <input className={ props.intermediateMaxValue <= props.intermediateStartValue ? 'error':''}
                                    value={props.intermediateMaxValue} type="number" onChange={maxValueHandler}/></div>
-            <div>Start value: <input className={props.intermediateStartValue < 0 || props.intermediateMaxValue <= props.intermediateStartValue ? 'error':''}
+            <div className={'input'}>Start value: <input className={props.intermediateStartValue < 0 || props.intermediateMaxValue <= props.intermediateStartValue ? 'error':''}
                                      value={props.intermediateStartValue} type="number" onChange={startValueHandler}/>
             </div>
             <Button name={'Set'} callback={onClickHandler}
