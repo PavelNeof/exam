@@ -71,7 +71,13 @@
     grid-auto-rows: 1fr 1fr 1fr;
 }
 
+.error{
+    background-color: red;
+}
 
+.errorText {
+    color: red;
+}
 
 @keyframes App-logo-spin {
     from {
