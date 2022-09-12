@@ -5,7 +5,7 @@ import {Сounter} from "./Сounter";
 import {Setting} from "./Setting";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
-import {ResetCountAC, UpdateCountAC} from "./redux/reducer";
+import {ErrorCountAC, MaxCountAC, ResetCountAC, StartCountAC, UpdateCountAC} from "./redux/reducer";
 
 function App(): any {
 
@@ -15,12 +15,14 @@ function App(): any {
     //const [startValue, setStartValue] = useState(0);
     //const [maxValue, setMaxValue] = useState(5);
    // const [count, setCount] = useState(0)
-    let [error,setError] = useState<boolean>(false)
+   // let [error,setError] = useState<boolean>(false)
 
 
     let count = useSelector<AppRootStateType, number>(state => state.reducer.count)
     let startValue = useSelector<AppRootStateType, number>(state => state.reducer.startValue)
     let maxValue = useSelector<AppRootStateType, number>(state => state.reducer.maxValue)
+    let error = useSelector<AppRootStateType, boolean>(state => state.reducer.error)
+
     let dispatch=useDispatch()
 
     const onClickHandler = (count: number) => {
@@ -29,10 +31,20 @@ function App(): any {
        // setCount(intermediateStartValue)
         dispatch(UpdateCountAC(count))
     }
-
     const resetOnClickHandler = (count: number) => {
         dispatch(ResetCountAC(count))
     }
+    const setError = (error:boolean) =>{
+        dispatch(ErrorCountAC(error))
+    } //Хз
+
+    const setMaxCount = (maxValue: number)=>{
+        dispatch(MaxCountAC(maxValue))
+    }
+    const setStartCount = (startValue:number)=>{
+        dispatch(StartCountAC(startValue))
+    }
+
 
 
    /* useEffect(() => {
@@ -67,9 +79,11 @@ function App(): any {
                 maxValue={maxValue}
                 startValue={startValue}
                 onClickHandler={onClickHandler} //() => setCount(startValue)
-
+                setMaxCount={setMaxCount}
+                setStartCount={setStartCount}
                 setError = {setError}
                 error = {error}
+                resetOnClickHandler={resetOnClickHandler}
             />
 
 

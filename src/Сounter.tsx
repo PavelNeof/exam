@@ -28,6 +28,7 @@ export const Сounter = (props: Props) => {
         <div className={'counter'}>
             <Tablo count={props.count}
                    maxValue={props.maxValue}
+                   startValue={props.startValue}
                    error={props.error}
                   // intermediateStartValue={props.intermediateStartValue}
                   // intermediateMaxValue={props.intermediateMaxValue}
