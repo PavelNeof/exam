@@ -8,15 +8,19 @@ type Props = {
     startValue: number
     count: number
     setCount: (count: number) => void
+    resetOnClickHandler: (count: number) => void
     error: boolean
-    intermediateStartValue: number
-    intermediateMaxValue: number
+  //  intermediateStartValue: number
+ //   intermediateMaxValue: number
 }
 
 
 export const Сounter = (props: Props) => {
     const additionNumber = () => {
-        props.setCount(props.count + 1)
+        props.setCount(props.count)
+    }
+    const resetOnClickHandler =() =>{
+        props.resetOnClickHandler(props.startValue)
     }
 
 
@@ -25,12 +29,15 @@ export const Сounter = (props: Props) => {
             <Tablo count={props.count}
                    maxValue={props.maxValue}
                    error={props.error}
-                   intermediateStartValue={props.intermediateStartValue}
-                   intermediateMaxValue={props.intermediateMaxValue}/>
-            <Button callback={additionNumber} name={'Inc'}
+                  // intermediateStartValue={props.intermediateStartValue}
+                  // intermediateMaxValue={props.intermediateMaxValue}
+            />
+            <Button
+                callback={additionNumber}
+                    name={'Inc'}
                     disabled={props.error||
                         props.count === props.maxValue}/>
-            <Button callback={() => props.setCount(props.startValue)} name={'Reset'}
+            <Button callback={resetOnClickHandler} name={'Reset'}
                     disabled={props.error ||
                         props.count === props.startValue}/>
         </div>
