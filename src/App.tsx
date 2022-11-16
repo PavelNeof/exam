@@ -5,7 +5,15 @@ import {Сounter} from "./Сounter";
 import {Setting} from "./Setting";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store";
-import {ErrorCountAC, MaxCountAC, ResetCountAC, StartCountAC, UpdateCountAC} from "./redux/reducer";
+import {
+    ErrorCountAC,
+    incValueTC,
+    MaxCountAC,
+    ResetCountAC,
+    setValueFromLocalStorageTC,
+    StartCountAC,
+    UpdateCountAC
+} from "./redux/reducer";
 
 function App(): any {
 
@@ -25,11 +33,19 @@ function App(): any {
 
     let dispatch=useDispatch()
 
+    useEffect(()=>{
+        // @ts-ignore
+        dispatch(setValueFromLocalStorageTC())
+    },[])
+
+
     const onClickHandler = (count: number) => {
        // setMaxValue(intermediateMaxValue)
       //  setStartValue(intermediateStartValue)
        // setCount(intermediateStartValue)
-        dispatch(UpdateCountAC(count))
+      //  dispatch(UpdateCountAC(count))
+        // @ts-ignore
+        dispatch(incValueTC(count))
     }
     const resetOnClickHandler = (count: number) => {
         dispatch(ResetCountAC(count))
@@ -44,6 +60,10 @@ function App(): any {
     const setStartCount = (startValue:number)=>{
         dispatch(StartCountAC(startValue))
     }
+
+    // const incHandler =(value:number) => {
+    //     dispatch(incValueTC(value))
+    // }
 
 
 

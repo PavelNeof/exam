@@ -10,16 +10,17 @@ type Props = {
     setCount: (count: number) => void
     resetOnClickHandler: (count: number) => void
     error: boolean
-  //  intermediateStartValue: number
- //   intermediateMaxValue: number
+    //  intermediateStartValue: number
+    //   intermediateMaxValue: number
 }
 
 
 export const Сounter = (props: Props) => {
+
     const additionNumber = () => {
         props.setCount(props.count)
     }
-    const resetOnClickHandler =() =>{
+    const resetOnClickHandler = () => {
         props.resetOnClickHandler(props.startValue)
     }
 
@@ -30,14 +31,14 @@ export const Сounter = (props: Props) => {
                    maxValue={props.maxValue}
                    startValue={props.startValue}
                    error={props.error}
-                  // intermediateStartValue={props.intermediateStartValue}
-                  // intermediateMaxValue={props.intermediateMaxValue}
+                // intermediateStartValue={props.intermediateStartValue}
+                // intermediateMaxValue={props.intermediateMaxValue}
             />
             <Button
                 callback={additionNumber}
-                    name={'Inc'}
-                    disabled={props.error||
-                        props.count === props.maxValue}/>
+                name={'Inc'}
+                disabled={props.error ||
+                    props.count === props.maxValue}/>
             <Button callback={resetOnClickHandler} name={'Reset'}
                     disabled={props.error ||
                         props.count === props.startValue}/>
