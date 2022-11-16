@@ -6,8 +6,6 @@ type TabloPropsType = {
     maxValue: number
     startValue:number
     error: boolean
-    //intermediateStartValue:number
-  //  intermediateMaxValue:number
 }
 
 export const Tablo = (props: TabloPropsType) => {
@@ -23,9 +21,3 @@ export const Tablo = (props: TabloPropsType) => {
         </div>
     )
 }
-
-/*
-
-{props.error ? <div className={props.intermediateStartValue < 0 || props.intermediateMaxValue <= props.intermediateStartValue?'errorText':''}>{
-    props.intermediateStartValue < 0 || props.intermediateMaxValue <= props.intermediateStartValue? 'incorrect value': 'Enter values and press "Set"'
-               */
